@@ -1,0 +1,30 @@
+
+@font-face {
+    font-family: 'Rohesta';
+    src: url('./rohesta.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    src: url('./Inter_18pt-Bold.ttf') format('TrueType');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  
+  @font-face {
+    font-family: 'caughe';
+    src: url('./caughe.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+
+  @font-face {
+    font-family: 'Greethen';
+    src: url('./Greethen.ttf') format('TrueType');
+    font-weight: normal;
+    font-style: normal;
+  }
