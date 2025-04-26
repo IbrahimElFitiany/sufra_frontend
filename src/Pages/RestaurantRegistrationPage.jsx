@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import MainLayout from '@layouts/MainLayout';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -113,7 +114,7 @@ function RestaurantRegistration() {
   };
 
   return (
-    <>
+    <MainLayout>
       <h1 className='text-[#B68D67] font-[Greethen] text-6xl mt-8'>join Sufrá Today</h1>
       <div className="flex flex-col items-center m-6 rounded-2xl p-6 gap-y-5 bg-[#061C1A] w-[40%]">
         <h1 className="text-[#BCBCBC] text-xs">
@@ -181,7 +182,7 @@ function RestaurantRegistration() {
           </button>
         </div>
       </div>
-    </>
+    </MainLayout>
   );
 }
 

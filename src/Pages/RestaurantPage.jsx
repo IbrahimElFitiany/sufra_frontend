@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import RestaurantCard from '@components/RestaurantCard';
+import RestaurantBannerCard from 'Components/RestaurantBannerCard';
 import Menu from '@components/Menu';
 import MainLayout from '@layouts/MainLayout';
 
@@ -35,7 +35,7 @@ function RestaurantPage() {
         <p className="text-red-500 text-center mt-10">{error}</p>
       ) : (
         <>
-          <RestaurantCard restaurant={restaurant} />
+          <RestaurantBannerCard restaurant={restaurant} />
           <Menu menus={restaurant?.menus || []} />
         </>
       )}

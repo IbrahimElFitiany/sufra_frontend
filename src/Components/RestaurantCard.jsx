@@ -1,111 +1,56 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import StarRatings from 'react-star-ratings';
 
-function RestaurantCard({restaurant}) {
-
-    if (restaurant === null) {
-      return <div>Loading...</div>; 
-    }
-    
-    if (!restaurant || Object.keys(restaurant).length === 0) {
-      return <div className="text-center text-red-500 mt-10">Restaurant not found.</div>;
-    }
-
-
-
-  return (
-    <div className="mt-10 w-[80%] h rounded-s overflow-hidden bg-[#061C1A] p-3 text-[#B68D67]">
-      {/* Image */}
-      <div className="h-[350px] w-full">
-        <img
-          src={restaurant.imgUrl}
-          alt="Restaurant"
-          className="w-full h-full object-cover rounded"
-        />
-      </div>
-
-      {/* Restaurant Info & Reservation */}
-      <div className="flex justify-between pb-1 border-b-1">
-        {/* Restaurant Info */}
-        <div className="flex flex-col justify-between items-start p-4">
-
-          {/* Basic Info */}
-          <div id='Basic Info' className="font-[rohesta]">
-            <h1 className="text-5xl">{restaurant.name}</h1> {/* Dynamic Name */}
-            <p className="text-xl text-[#BCBCBC]">{restaurant.address}</p> {/* Dynamic Address */}
-          </div>
-
-          {/* Details */}
-          <div id='Details' className="w-full text-xs flex flex-col gap-y-8 mt-10 font-[Inter]">
-            <div id="details">
-              <h3 className="font-[#E5C7AA]">About this Restaurant:</h3>
-              <p className="text-[#BCBCBC] max-w-lg">{restaurant.description}</p>
-            </div>
-
-            {/* More Details */}
-            <div id="detailsAktridk" className="flex gap-x-11 font-bold">
-
-              <div id="Cuisine" className='flex justify-center items-end gap-x-1'>
-                <img src="/cuisine.png" className='size-5' alt="" />
-                <h1>{capitalize(restaurant.cuisine)}</h1> {/* Dynamic Cuisine ID */}
-              </div>
-
-              <div id="PhoneNum" className='flex justify-center items-end gap-x-1'>
-
-                <img src="/phone.png" className='size-5' alt="" />
-                <h1>{restaurant.phone}</h1> {/* Dynamic Phone Number */}
-              </div>
-
-              <div id="District" className="flex justify-center items-end gap-x-1">
-                <img src="/location.png" className='size-5' alt="" />
-                <h1 className=''>{`${restaurant.district}`}</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Reservation */}
-        <div className="flex flex-col justify-center items-center bg-transparent border-1 h-[100%] w-sm border-[#B68D67] mt-4 px-4 py-2 rounded-lg">
-          <div id="title" className="font-bold">
-            BOOK A TABLE
-          </div>
-
-          <select id="dropdown" name="options" className="w-[100%] my-2 p-1 border-1 rounded-lg">
-            <option value="profile">4 people</option>
-            <option value="settings">5 people</option>
-            <option value="logout">6 people</option>
-          </select>
-
-          <div className="flex w-[100%]">
-            {/* Date Picker */}
-            <input
-              type="date"
-              className="mr-1 w-full my-2 p-1 border rounded-lg bg-[#061C1A] text-[#B68D67] focus:outline-none"
+const RestaurantCard = ({ name, location, cuisine, rating, image }) => {
+    return (
+        <div className="w-[355px] h-[435px] flex flex-col items-center bg-[#142A29] shadow-lg rounded-md m-4">
+            <img 
+                src={image} 
+                alt={`${name}`} 
+                className="h-[60%] w-full object-cover rounded-t-lg" 
             />
 
-            {/* Time Picker */}
-            <input
-              type="time"
-              className="ml-1 w-full my-2 p-1 border rounded-lg bg-[#061C1A] text-[#B68D67] focus:outline-none"
-            />
-          </div>
+            <div id="restaurant-card__details" className="px-4 py-1 w-full">
+                <h2 className="font-[Rohesta] text-[#B68D67] text-4xl truncate" title={`${name}`}>{name}</h2>
+                <h1 className="text-[#A1A1A1] font-medium truncate">{location}</h1>
 
-          <button className="my-2 w-[100%] h-8 bg-[#B68D67] text-[white] font-bold rounded-lg">
-            Confirm
-          </button>
+                <div id="Cuisine & Rating" className="flex justify-between text-[#B68D67] font-[InterMed] text-md mt-2">
+                    <div className="flex items-center gap-x-1">
+                        <StarRatings
+                            rating={rating}
+                            starRatedColor="#F0A252"
+                            starEmptyColor="#838383"
+                            numberOfStars={5}
+                            starDimension="24px"
+                            starSpacing="2px"
+                        />
+                    </div>
+                    <div className="flex items-baseline gap-x-1">
+                        <img src="/cuisine1.png" alt={`${name}`} className="size-4 transform scale-x-[-1]" />
+                        <p>{cuisine}</p>
+                    </div>
+                </div>
+
+                <div id="Avalible Reservation" className="flex justify-between gap-x-3.5 text-white">
+
+                    <button className="h-[38px] w-[88px] bg-[#B68D67] rounded-md mt-4 font-[InterMed] text-lg cursor-pointer 
+                        transition-colors duration-300 hover:bg-[#d4a678]">
+                        12:00 PM
+                    </button>
+
+                    <button className="h-[38px] w-[88px] bg-[#B68D67] rounded-md mt-4 font-[InterMed] text-lg cursor-pointer 
+                        transition-colors duration-300 hover:bg-[#d4a678]">
+                        1:30 PM
+                    </button>
+
+                    <button className="h-[38px] w-[88px] bg-[#B68D67] rounded-md mt-4 font-[InterMed] text-lg cursor-pointer 
+                        transition-colors duration-300 hover:bg-[#d4a678]">
+                        5:45 PM
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
-}
+    );
+};
 
 export default RestaurantCard;
-
-
-
-
-
-
-//function 34an a captalize
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-}

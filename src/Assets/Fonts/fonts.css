@@ -28,3 +28,11 @@
     font-weight: normal;
     font-style: normal;
   }
+
+  
+  @font-face {
+    font-family: 'InterMed';
+    src: url('./InterMed.ttf') format('TrueType');
+    font-weight: normal;
+    font-style: normal;
+  }

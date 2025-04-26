@@ -13,7 +13,8 @@ export default defineConfig({
         Inter: ["Inter"],
         rohesta: ['Rohesta', 'sans-serif'],
         caughe: ['caughe' , 'sans-serif'],
-        Greethen: ['Greethen' , 'sans']
+        Greethen: ['Greethen' , 'sans'],
+        InterMed:[ 'Inter-Medium' , 'sans-serif'],
       },
     },
   },

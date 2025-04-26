@@ -6,7 +6,8 @@ import './index.css'
 import './Assets/Fonts/fonts.css'
 
 import RestaurantPage from '@pages/RestaurantPage'
-import RestaurantRegistration from '@pages/RestaurantRegistration'
+import RestaurantRegistration from '@pages/RestaurantRegistrationPage'
+import HomePage from '@pages/HomePage'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -14,7 +15,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/restaurant/:id" element={<RestaurantPage/>} />
         <Route path="/join-us" element={<RestaurantRegistration/>} />
-
+        <Route path="/" element={<HomePage/>} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
