@@ -5,8 +5,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import './Assets/Fonts/fonts.css'
 
-import RestaurantPage from './Components/Pages/RestaurantPage'
-import RestaurantRegistration from './Components/Pages/RestaurantRegistration'
+import RestaurantPage from '@pages/RestaurantPage'
+import RestaurantRegistration from '@pages/RestaurantRegistration'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

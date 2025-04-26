@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import RestaurantCard from '../RestaurantCard';
-import Menu from '../Menu';
-import Header from '../Header';
-import Footer from '../Footer';
+import RestaurantCard from '@components/RestaurantCard';
+import Menu from '@components/Menu';
+import MainLayout from '@layouts/MainLayout';
+
 
 function RestaurantPage() {
   const { id } = useParams();
@@ -30,8 +30,7 @@ function RestaurantPage() {
   }, [id]);
 
   return (
-    <div className="w-full flex flex-col items-center">
-      <Header />
+    <MainLayout>
       {error ? (
         <p className="text-red-500 text-center mt-10">{error}</p>
       ) : (
@@ -40,8 +39,7 @@ function RestaurantPage() {
           <Menu menus={restaurant?.menus || []} />
         </>
       )}
-      <Footer />
-    </div>
+    </MainLayout>
   );
 }
 
