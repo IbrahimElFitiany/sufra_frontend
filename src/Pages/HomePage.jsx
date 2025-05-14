@@ -4,6 +4,7 @@ import MainLayout from '@layouts/MainLayout';
 import CuisineSlider from '@components/CuisineSlider'; // Import the new component
 
 function HomePage() {
+
     return (
         <MainLayout>
             <div id="landing-page-banner" className="w-[80%] mt-15 mb-9">
@@ -12,7 +13,7 @@ function HomePage() {
 
             <div id="sufraPicks" className="w-[80%] flex flex-col rounded-lg bg-[#061C1A]">
                 <h1 className="m-5 text-6xl font-[Greethen] text-[#B68D67]">Sufra Picks</h1>
-                <div id="restaurantCards_Container" className="rounded-lg bg-[#061C1A] flex">
+                <div id="restaurantCards_Container" className="rounded-lg bg-[#061C1A] flex justify-around">
                     <RestaurantCard
                         name="Pizzini"
                         location={"First New Cairo, Cairo"}
@@ -24,7 +25,7 @@ function HomePage() {
                         name="Mori Sushi Cfc"
                         location={"9 Palestine Street,New Maadi"}
                         cuisine="Japanese"
-                        rating={4.5}
+                        rating={1.5}
                         image="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/63/55/ee/indulge-your-cravings.jpg?w=600&h=-1&s=1"
                     />
                     <RestaurantCard
@@ -43,7 +44,6 @@ function HomePage() {
                     />
                 </div>
             </div>
-
             <CuisineSlider />
         </MainLayout>
     );

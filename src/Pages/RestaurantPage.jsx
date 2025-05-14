@@ -13,7 +13,7 @@ function RestaurantPage() {
   useEffect(() => {
     const fetchRestaurantData = async () => {
       try {
-        const response = await fetch(`http://localhost:5272/api/Restaurant/${id}`);
+        const response = await fetch(`http://localhost:5164/api/Restaurant/${id}`);
         if (!response.ok) throw new Error("Failed to fetch restaurant data");
         const data = await response.json();
         if (!data || Object.keys(data).length === 0) {

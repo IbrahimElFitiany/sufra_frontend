@@ -19,8 +19,36 @@ function RestaurantRegistration() {
     imgUrl: '',
     description: '',
     address: '',
-    districtId: 1,
+    districtId: '',
   });
+  const [cuisines, setCuisines] = useState([]); // Declare cuisines state
+  const [districts , setDistricts] = useState([]);
+
+  useEffect(() => {
+    async function fetchCuisines() {
+      try {
+        const response = await fetch("http://localhost:5164/api/cuisine");
+        const data = await response.json();
+        setCuisines(data);
+      } catch (err) {
+        console.error("Error fetching cuisines:", err);
+      }
+    }
+    fetchCuisines();
+  }, []);
+
+  useEffect(() => {
+    async function fetchDistricts() {
+      try {
+        const response = await fetch("http://localhost:5164/api/district");
+        const data = await response.json();
+        setDistricts(data);
+      } catch (err) {
+        console.error("Error fetching Districts:", err);
+      }
+    }
+    fetchDistricts();
+  }, []);
 
   function MapClickHandler() {
     const map = useMapEvents({
@@ -95,7 +123,7 @@ function RestaurantRegistration() {
     };
 
     try {
-      const response = await fetch("http://localhost:5272/api/Restaurant/register", {
+      const response = await fetch("http://localhost:5164/api/Restaurant/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -146,9 +174,28 @@ function RestaurantRegistration() {
 
             <label className='mx-1 mb-1'>Cuisine:</label>
             <select name="cuisineId" onChange={handleChange} value={formData.cuisineId} className="border border-[#B68D67] rounded-lg p-2 mb-4" required>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+              {cuisines.length > 0 ? (
+                cuisines.map((cuisine) => (
+                  <option key={cuisine.cuisineId} value={cuisine.cuisineId}>
+                    {cuisine.cuisineName}
+                  </option>
+                ))
+              ) : (
+                <option>Loading cuisines...</option>
+              )}
+            </select>
+
+            <label className='mx-1 mb-1'>District:</label>
+            <select name="districtId" onChange={handleChange} value={formData.districtId} className="border border-[#B68D67] rounded-lg p-2 mb-4" required>
+              {districts.length > 0 ? (
+                districts.map((district) => (
+                  <option key={district.id} value={district.id}>
+                    {district.name}
+                  </option>
+                ))
+              ) : (
+                <option>Loading districts...</option>
+              )}
             </select>
 
             <label className='mx-1 mb-1'>Restaurant Img For test:</label>
@@ -177,7 +224,7 @@ function RestaurantRegistration() {
         </div>
 
         <div>
-          <button type="submit" onClick={handleSubmit} className="py-2 px-3.5 font-[Rohesta] bg-[#B68D67] text-white text-lg rounded-lg">
+          <button type="submit" onClick={handleSubmit} className="py-2 px-3.5 font-[Rohesta] bg-[#B68D67] text-white text-lg rounded-lg hover:brightness-105 hover:scale-102 transition-all duration-300">
             Submit
           </button>
         </div>
